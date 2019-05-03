@@ -2,7 +2,7 @@ public class Character {
 
     public static void main(String[] args) {
 
-        CharacterDB db = new CharacterDB();
+        DBConfig db = new DBConfig();
         CharacterGUI gui = new CharacterGUI();
     }
 }

@@ -2,7 +2,6 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class CharacterGUI extends JFrame {
 
@@ -25,12 +24,16 @@ public class CharacterGUI extends JFrame {
     private JButton saveButton;
     private JButton clearButton;
 
-    private static final String[] CLASS_ARRAY = {"N/A", "Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin",
-            "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard"};
-    private static final String[] RACE_ARRAY = {"N/A", "Dragonborn", "Dwarf", "Elf", "Gnome", "Half Elf", "Half Orc", "Halfling",
-            "Human", "Tiefling"};
-    private static final String [] ALIGNMENT_ARRAY = {"N/A", "Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral",
-            "Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"};
+    // fill the combo boxes
+    private static final String[] CLASS_ARRAY = {"N/A", "Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk",
+            "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard"};
+
+    private static final String[] RACE_ARRAY = {"N/A", "Dragonborn", "Dwarf", "Elf", "Gnome", "Half Elf", "Half Orc",
+            "Halfling", "Human", "Tiefling"};
+
+    private static final String [] ALIGNMENT_ARRAY = {"N/A", "Lawful Good", "Neutral Good", "Chaotic Good",
+            "Lawful Neutral", "Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"};
+
     private static final String[] LEVEL_ARRAY = {"N/A", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
             "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"};
 
@@ -52,35 +55,84 @@ public class CharacterGUI extends JFrame {
 
         characterTable.setModel(tableModel);
 
-        addListeners();
+        addButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
-        pack();
-    }
+                String playerName = playerText.getText();
+                String characterName = characterText.getText();
+                String gameName = gameText.getText();
 
-    private void addListeners() {
+                int classIndex = classCombo.getSelectedIndex();
+                int raceIndex = raceCombo.getSelectedIndex();
+                int alignmentIndex = alignmentCombo.getSelectedIndex();
+                int levelIndex = levelCombo.getSelectedIndex();
+
+                boolean npcCheck = npc.isSelected();    //redo
+
+                String background = backgroundArea.getText();
+                String equipment = equipmentArea.getText();
+                String spells = spellsArea.getText();
+
+                CharacterDB.addCharacter(playerName, characterName, gameName, classIndex, raceIndex,
+                        alignmentIndex, levelIndex, npcCheck, background, equipment, spells);
+
+                tableModel.addRow(new String[]{playerName, characterName, gameName});
+                clearAll();
+            }
+        });
+
+        updateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+            }
+        });
+
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
 
         clearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                playerText.setText("");
-                characterText.setText("");
-                gameText.setText("");
-
-                classCombo.setSelectedIndex(0);
-                raceCombo.setSelectedIndex(0);
-                alignmentCombo.setSelectedIndex(0);
-                levelCombo.setSelectedIndex(0);
-
-                npc.setSelected(false);
-
-                backgroundArea.setText("");
-                equipmentArea.setText("");
-                spellsArea.setText("");
-
-                //characterTable.setSelection???
+                clearAll();
             }
         });
+
+        saveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        pack();
+    }
+
+    private void clearAll() {
+
+        playerText.setText("");
+        characterText.setText("");
+        gameText.setText("");
+
+        classCombo.setSelectedIndex(0);
+        raceCombo.setSelectedIndex(0);
+        alignmentCombo.setSelectedIndex(0);
+        levelCombo.setSelectedIndex(0);
+
+        npc.setSelected(false);
+
+        backgroundArea.setText("");
+        equipmentArea.setText("");
+        spellsArea.setText("");
+
+        characterTable.setRowSelectionInterval(0, 0);
     }
 
     private void fetchCombo() {
