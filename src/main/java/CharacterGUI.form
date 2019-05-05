@@ -8,7 +8,7 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="d3ea0" class="javax.swing.JLabel">
+      <component id="d3ea0" class="javax.swing.JLabel" binding="playerNameLabel">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -22,9 +22,11 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <nextFocusableComponent value="2aa2"/>
+        </properties>
       </component>
-      <component id="8755" class="javax.swing.JLabel">
+      <component id="8755" class="javax.swing.JLabel" binding="characterNameLabel">
         <constraints>
           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -38,9 +40,11 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <nextFocusableComponent value="bfdc2"/>
+        </properties>
       </component>
-      <component id="6b639" class="javax.swing.JLabel">
+      <component id="6b639" class="javax.swing.JLabel" binding="gameNameLabel">
         <constraints>
           <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -54,7 +58,9 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <nextFocusableComponent value="cf589"/>
+        </properties>
       </component>
       <component id="25643" class="javax.swing.JLabel">
         <constraints>
@@ -63,12 +69,6 @@
         <properties>
           <text value="Class"/>
         </properties>
-      </component>
-      <component id="cf589" class="javax.swing.JComboBox" binding="classCombo">
-        <constraints>
-          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties/>
       </component>
       <component id="a912c" class="javax.swing.JLabel">
         <constraints>
@@ -82,7 +82,9 @@
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <nextFocusableComponent value="612c9"/>
+        </properties>
       </component>
       <component id="335c8" class="javax.swing.JLabel">
         <constraints>
@@ -96,7 +98,9 @@
         <constraints>
           <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <nextFocusableComponent value="ddc87"/>
+        </properties>
       </component>
       <component id="f1052" class="javax.swing.JLabel">
         <constraints>
@@ -110,7 +114,9 @@
         <constraints>
           <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <nextFocusableComponent value="8388a"/>
+        </properties>
       </component>
       <component id="54bfd" class="javax.swing.JLabel">
         <constraints>
@@ -125,6 +131,7 @@
           <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <nextFocusableComponent value="52ce3"/>
           <text value=""/>
         </properties>
       </component>
@@ -157,6 +164,7 @@
           <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <nextFocusableComponent value="e3653"/>
           <text value="Add"/>
         </properties>
       </component>
@@ -165,6 +173,7 @@
           <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <nextFocusableComponent value="86fcb"/>
           <text value="Update"/>
         </properties>
       </component>
@@ -173,6 +182,7 @@
           <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <nextFocusableComponent value="b9b00"/>
           <text value="Delete"/>
         </properties>
       </component>
@@ -196,6 +206,7 @@
           <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <nextFocusableComponent value="192da"/>
           <text value="Save"/>
         </properties>
       </component>
@@ -204,6 +215,7 @@
           <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <nextFocusableComponent value="90305"/>
           <text value="Clear"/>
         </properties>
       </component>
@@ -219,6 +231,7 @@
             <properties>
               <editable value="true"/>
               <lineWrap value="true"/>
+              <nextFocusableComponent value="56ec8"/>
               <wrapStyleWord value="false"/>
             </properties>
           </component>
@@ -235,6 +248,7 @@
             <constraints/>
             <properties>
               <lineWrap value="true"/>
+              <nextFocusableComponent value="7df17"/>
             </properties>
           </component>
         </children>
@@ -250,10 +264,19 @@
             <constraints/>
             <properties>
               <lineWrap value="true"/>
+              <nextFocusableComponent value="a8cbf"/>
             </properties>
           </component>
         </children>
       </scrollpane>
+      <component id="cf589" class="javax.swing.JComboBox" binding="classCombo">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <nextFocusableComponent value="e5087"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>

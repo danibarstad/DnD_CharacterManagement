@@ -2,6 +2,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class CharacterGUI extends JFrame {
 
@@ -23,6 +25,9 @@ public class CharacterGUI extends JFrame {
     private JTable characterTable;
     private JButton saveButton;
     private JButton clearButton;
+    private JLabel playerNameLabel;
+    private JLabel characterNameLabel;
+    private JLabel gameNameLabel;
 
     // fill the combo boxes
     private static final String[] CLASS_ARRAY = {"N/A", "Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk",
@@ -44,6 +49,9 @@ public class CharacterGUI extends JFrame {
         setTitle("Game Master Character List");
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        tabOrder(spellsArea);
+        tabOrder(equipmentArea);
+        tabOrder(backgroundArea);
 
         DefaultTableModel tableModel = new DefaultTableModel();
 
@@ -68,17 +76,27 @@ public class CharacterGUI extends JFrame {
                 int alignmentIndex = alignmentCombo.getSelectedIndex();
                 int levelIndex = levelCombo.getSelectedIndex();
 
-                boolean npcCheck = npc.isSelected();    //redo
+                boolean npcCheck;
+                if (npc.isSelected()){
+                    npcCheck = true;
+                } else {
+                    npcCheck = false;
+                }
 
                 String background = backgroundArea.getText();
                 String equipment = equipmentArea.getText();
                 String spells = spellsArea.getText();
 
-                CharacterDB.addCharacter(playerName, characterName, gameName, classIndex, raceIndex,
-                        alignmentIndex, levelIndex, npcCheck, background, equipment, spells);
+                if (isPresent(playerNameLabel.getText(), playerName) &&
+                        isPresent(characterNameLabel.getText(), characterName) &&
+                        isPresent(gameNameLabel.getText(), gameName)){
 
-                tableModel.addRow(new String[]{playerName, characterName, gameName});
-                clearAll();
+                    CharacterDB.addCharacter(playerName, characterName, gameName, classIndex, raceIndex,
+                            alignmentIndex, levelIndex, npcCheck, background, equipment, spells);
+
+                    tableModel.addRow(new String[]{playerName, characterName, gameName});
+                    clearAll();
+                }
             }
         });
 
@@ -113,6 +131,16 @@ public class CharacterGUI extends JFrame {
         });
 
         pack();
+    }
+
+     private boolean isPresent(String name, String text) {
+
+        if (! text.equals("")) {
+            return true;
+        } else {
+            showMessageDialog(name + " cannot be left blank.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
     }
 
     private void clearAll() {
@@ -152,5 +180,30 @@ public class CharacterGUI extends JFrame {
         for (String l : LEVEL_ARRAY) {
             levelCombo.addItem(l);
         }
+    }
+
+    private void showMessageDialog(String message, String title, int type) {
+
+        JOptionPane.showMessageDialog(this, message, title, type);
+    }
+
+    private void tabOrder(JTextArea area) {
+
+        // code found on StackOverflow
+        // sets "Tab" button for JTextArea to move to focus to next area,
+        // instead of adding "\t" to the text
+        area.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_TAB) {
+                    if (e.getModifiers() > 0) {
+                        area.transferFocusBackward();
+                    } else {
+                        area.transferFocus();
+                    }
+                    e.consume();
+                }
+            }
+        });
     }
 }

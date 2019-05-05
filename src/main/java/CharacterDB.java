@@ -11,8 +11,9 @@ public class CharacterDB {
              Statement statement = connection.createStatement()) {
 
             String createCharacterTable = "CREATE TABLE IF NOT EXISTS characters (id INTEGER PRIMARY KEY, " +
-                    "player TEXT, character TEXT, game TEXT, classBox INTEGER, raceBox INTEGER, alignmentBox INTEGER, " +
-                    "levelBox INTEGER, npcBox BOOLEAN, background TEXT, equipment TEXT, spells TEXT";
+                    "playerName TEXT, characterName TEXT, gameName TEXT, classBox INTEGER, raceBox INTEGER, " +
+                    "alignmentBox INTEGER, levelBox INTEGER, npcBox BOOLEAN, backgroundArea TEXT, " +
+                    "equipmentArea TEXT, spellsArea TEXT)";
 
             statement.executeUpdate(createCharacterTable);
 
@@ -22,16 +23,18 @@ public class CharacterDB {
         }
     }
 
-    protected static void addCharacter(String player, String character, String game, int classX, int race, int alignment,
+    protected static void addCharacter(String player, String characterX, String game, int classX, int race, int alignment,
                                     int level, boolean npc, String background, String equipment, String spells) {
 
-        final String addSql = "INSERT INTO characters VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )";
+        final String addSql = "INSERT INTO characters (playerName, characterName, gameName, classBox, raceBox, " +
+                "alignmentBox, levelBox, npcBox, backgroundArea, equipmentArea, spellsArea) " +
+                "VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )";
 
         try (Connection connection = DriverManager.getConnection(DBConfig.DB_URL);
              PreparedStatement ps = connection.prepareStatement(addSql)) {
 
             ps.setString(1, player);
-            ps.setString(2, character);
+            ps.setString(2, characterX);
             ps.setString(3, game);
 
             ps.setInt(4, classX);
