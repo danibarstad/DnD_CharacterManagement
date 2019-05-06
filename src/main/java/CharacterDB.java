@@ -55,4 +55,20 @@ public class CharacterDB {
             throw new RuntimeException(e);
         }
     }
+
+    protected static void deleteCharacter(String name) {
+
+        String deleteSql = "DELETE FROM characters WHERE playerName = ?";
+
+        try (Connection connection = DriverManager.getConnection(DBConfig.DB_URL);
+        PreparedStatement deletePs = connection.prepareStatement(deleteSql)) {
+
+            deletePs.setString(1, name);
+            deletePs.execute();
+
+        } catch (SQLException e) {
+
+            throw new RuntimeException(e);
+        }
+    }
 }

@@ -1,9 +1,6 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 
 public class CharacterGUI extends JFrame {
 
@@ -112,6 +109,8 @@ public class CharacterGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                //CharacterDB.deleteCharacter();
+                characterTable.getSelectedRow();
             }
         });
 
@@ -131,6 +130,8 @@ public class CharacterGUI extends JFrame {
         });
 
         pack();
+        characterTable.addMouseListener(new MouseAdapter() {
+        });
     }
 
      private boolean isPresent(String name, String text) {
@@ -207,4 +208,3 @@ public class CharacterGUI extends JFrame {
         });
     }
 }
-// hey

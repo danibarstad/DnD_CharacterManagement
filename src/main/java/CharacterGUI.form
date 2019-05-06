@@ -165,6 +165,7 @@
         </constraints>
         <properties>
           <nextFocusableComponent value="e3653"/>
+          <selected value="false"/>
           <text value="Add"/>
         </properties>
       </component>
