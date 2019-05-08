@@ -1,6 +1,7 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class CharacterGUI extends JFrame {
 
@@ -39,8 +40,12 @@ public class CharacterGUI extends JFrame {
     private static final String[] LEVEL_ARRAY = {"N/A", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
             "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"};
 
+    private Controller controller;
+
 
     CharacterGUI() {
+
+        this.controller = controller;
 
         setContentPane(mainPanel);
         setTitle("Game Master Character List");
@@ -52,9 +57,9 @@ public class CharacterGUI extends JFrame {
 
         DefaultTableModel tableModel = new DefaultTableModel();
 
-        tableModel.addColumn("Player");
-        tableModel.addColumn("Character");
-        tableModel.addColumn("Game");
+        tableModel.addColumn("player");
+        tableModel.addColumn("character");
+        tableModel.addColumn("game");
 
         fetchCombo();
 
@@ -88,8 +93,11 @@ public class CharacterGUI extends JFrame {
                         isPresent(characterNameLabel.getText(), characterName) &&
                         isPresent(gameNameLabel.getText(), gameName)){
 
-                    CharacterDB.addCharacter(playerName, characterName, gameName, classIndex, raceIndex,
-                            alignmentIndex, levelIndex, npcCheck, background, equipment, spells);
+                    Character characterRecord = new Character(playerName, characterName, gameName, classIndex,
+                            raceIndex, alignmentIndex, levelIndex, npcCheck, background, equipment, spells);
+
+
+                    CharacterDB.addCharacter(characterRecord);
 
                     tableModel.addRow(new String[]{playerName, characterName, gameName});
                     clearAll();
@@ -206,5 +214,17 @@ public class CharacterGUI extends JFrame {
                 }
             }
         });
+    }
+
+    void setTableData(ArrayList<Character> data) {
+
+        DefaultTableModel tableModel = (DefaultTableModel) characterTable.getModel();
+        tableModel.setRowCount(0);
+
+        if (data != null) {
+            for (Character character : data) {
+                tableModel.addRow(new Character[]{character});
+            }
+        }
     }
 }
