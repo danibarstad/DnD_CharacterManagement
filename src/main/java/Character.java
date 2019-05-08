@@ -26,11 +26,11 @@ public class Character {
         spells = sp;
     }
 
-    Character(String p, String ch, String g) {
-        playerName = p;
-        characterName = ch;
-        gameName = g;
-    }
+//    Character(String p, String ch, String g) {
+//        playerName = p;
+//        characterName = ch;
+//        gameName = g;
+//    }
 
     public String getPlayerName() {
         return playerName;

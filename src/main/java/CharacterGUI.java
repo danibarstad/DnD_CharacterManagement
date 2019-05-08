@@ -43,8 +43,7 @@ public class CharacterGUI extends JFrame {
     private Controller controller;
 
 
-    CharacterGUI() {
-
+    CharacterGUI(Controller controller) {
         this.controller = controller;
 
         setContentPane(mainPanel);
@@ -57,9 +56,9 @@ public class CharacterGUI extends JFrame {
 
         DefaultTableModel tableModel = new DefaultTableModel();
 
-        tableModel.addColumn("player");
-        tableModel.addColumn("character");
-        tableModel.addColumn("game");
+        tableModel.addColumn("Player");
+        tableModel.addColumn("Character");
+        tableModel.addColumn("Game");
 
         fetchCombo();
 
@@ -96,10 +95,12 @@ public class CharacterGUI extends JFrame {
                     Character characterRecord = new Character(playerName, characterName, gameName, classIndex,
                             raceIndex, alignmentIndex, levelIndex, npcCheck, background, equipment, spells);
 
+                    // calling NullPointException, but I'm unsure why.
+                    controller.addToDatabase(characterRecord);
 
-                    CharacterDB.addCharacter(characterRecord);
+                    ArrayList<Character> allData = controller.getAllData();
+                    setTableData(allData);
 
-                    tableModel.addRow(new String[]{playerName, characterName, gameName});
                     clearAll();
                 }
             }

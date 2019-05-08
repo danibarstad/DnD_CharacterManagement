@@ -5,9 +5,9 @@ public class CharacterDB {
 
     static final String DB_URL = "jdbc:sqlite:character.db";
 
-    static final String PLAYER_COL = "player";
-    static final String CHARACTER_COL = "character";
-    static final String GAME_COL = "game";
+    static final String PLAYER_COL = "playerName";
+    static final String CHARACTER_COL = "characterName";
+    static final String GAME_COL = "gameName";
 
     CharacterDB(){
         createTable();
@@ -30,7 +30,7 @@ public class CharacterDB {
         }
     }
 
-    protected static void addCharacter(Character character) {
+    void addCharacter(Character character) {
 
         final String addSql = "INSERT INTO characters (playerName, characterName, gameName, classBox, raceBox, " +
                 "alignmentBox, levelBox, npcBox, backgroundArea, equipmentArea, spellsArea) " +

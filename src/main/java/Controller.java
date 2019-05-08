@@ -14,8 +14,7 @@ public class Controller {
 
         ArrayList<Character> allData = db.fetchAllCharacters();
 
-//        gui = new CharacterGUI(this);
-        gui = new CharacterGUI();
+        gui = new CharacterGUI(this);
         gui.setTableData(allData);
     }
 
