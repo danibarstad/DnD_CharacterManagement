@@ -36,11 +36,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/CharacterDB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
-              <caret line="106" lean-forward="true" selection-start-line="106" selection-end-line="106" />
+            <state relative-caret-position="174">
+              <caret line="123" column="58" lean-forward="true" selection-start-line="123" selection-start-column="58" selection-end-line="123" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -48,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+            <state relative-caret-position="425">
+              <caret line="33" column="1" lean-forward="true" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -60,8 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Character.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-532">
-              <caret line="24" column="23" lean-forward="true" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+            <state relative-caret-position="408">
+              <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
             </state>
           </provider>
         </entry>
@@ -69,10 +69,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/CharacterGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1479">
-              <caret line="135" column="40" selection-start-line="135" selection-start-column="40" selection-end-line="135" selection-end-column="40" />
+            <state relative-caret-position="182">
+              <caret line="168" column="58" selection-start-line="168" selection-start-column="58" selection-end-line="168" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="class#4233:4453" />
+                <element signature="class#4499:4649" />
+                <element signature="e#5142#5317#0" expanded="true" />
+                <element signature="e#5316#5317#0" expanded="true" />
+                <element signature="method#isPresent#0;class#CharacterGUI#0" />
+                <element signature="method#clearAll#0;class#CharacterGUI#0" />
+                <element signature="method#fetchCombo#0;class#CharacterGUI#0" />
+                <element signature="method#showMessageDialog#0;class#CharacterGUI#0" />
+                <element signature="method#tabOrder#0;class#CharacterGUI#0" />
+                <element signature="method#setTableData#0;class#CharacterGUI#0" />
               </folding>
             </state>
           </provider>
@@ -109,12 +119,12 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/DBConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/CharacterDB.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/78a8b4d4-6608-4e1e-b3b2-148c4a9b6b95/console.sql" />
         <option value="$PROJECT_DIR$/src/main/java/CharacterGUI.form" />
-        <option value="$PROJECT_DIR$/src/main/java/CharacterGUI.java" />
         <option value="$PROJECT_DIR$/src/main/java/Controller.java" />
         <option value="$PROJECT_DIR$/src/main/java/Character.java" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/78a8b4d4-6608-4e1e-b3b2-148c4a9b6b95/console.sql" />
+        <option value="$PROJECT_DIR$/src/main/java/CharacterGUI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/CharacterDB.java" />
       </list>
     </option>
   </component>
@@ -233,7 +243,7 @@
       <workItem from="1557111365146" duration="3461000" />
       <workItem from="1557204493495" duration="593000" />
       <workItem from="1557251210483" duration="7473000" />
-      <workItem from="1557339378544" duration="8178000" />
+      <workItem from="1557339378544" duration="21216000" />
     </task>
     <task id="LOCAL-00001" summary="setup GUI, etc">
       <created>1556761022522</created>
@@ -277,11 +287,25 @@
       <option name="project" value="LOCAL" />
       <updated>1557288713173</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Can add new characters to database &amp; GUI but the formatting is wrong.&#10;Need to reformat to work with JTable and not JList.">
+      <created>1557358063482</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1557358063482</updated>
+    </task>
+    <task id="LOCAL-00008" summary="JTable formatting is working. Delete button is working.&#10;Starting on Update button.">
+      <created>1557366033537</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1557366033537</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41736000" />
+    <option name="totallyTimeSpent" value="54774000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -297,8 +321,8 @@
       <window_info id="Learn" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3268921" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39978564" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3268921" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3993559" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -329,7 +353,9 @@
     <MESSAGE value="setup some error messaging as well as set tab order lol" />
     <MESSAGE value="I'm not even sure what I changed this time... :(" />
     <MESSAGE value="Reworking my code. Not running yet, but almost." />
-    <option name="LAST_COMMIT_MESSAGE" value="Reworking my code. Not running yet, but almost." />
+    <MESSAGE value="Can add new characters to database &amp; GUI but the formatting is wrong.&#10;Need to reformat to work with JTable and not JList." />
+    <MESSAGE value="JTable formatting is working. Delete button is working.&#10;Starting on Update button." />
+    <option name="LAST_COMMIT_MESSAGE" value="JTable formatting is working. Delete button is working.&#10;Starting on Update button." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pom.xml">
@@ -346,20 +372,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/CharacterDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="106" lean-forward="true" selection-start-line="106" selection-end-line="106" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/78a8b4d4-6608-4e1e-b3b2-148c4a9b6b95/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="25" lean-forward="true" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="33" column="1" lean-forward="true" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Character.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
         </state>
       </provider>
     </entry>
@@ -368,25 +398,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/CharacterGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1479">
-          <caret line="135" column="40" selection-start-line="135" selection-start-column="40" selection-end-line="135" selection-end-column="40" />
+        <state relative-caret-position="182">
+          <caret line="168" column="58" selection-start-line="168" selection-start-column="58" selection-end-line="168" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="class#4233:4453" />
+            <element signature="class#4499:4649" />
+            <element signature="e#5142#5317#0" expanded="true" />
+            <element signature="e#5316#5317#0" expanded="true" />
+            <element signature="method#isPresent#0;class#CharacterGUI#0" />
+            <element signature="method#clearAll#0;class#CharacterGUI#0" />
+            <element signature="method#fetchCombo#0;class#CharacterGUI#0" />
+            <element signature="method#showMessageDialog#0;class#CharacterGUI#0" />
+            <element signature="method#tabOrder#0;class#CharacterGUI#0" />
+            <element signature="method#setTableData#0;class#CharacterGUI#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Character.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/CharacterDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-532">
-          <caret line="24" column="23" lean-forward="true" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+        <state relative-caret-position="174">
+          <caret line="123" column="58" lean-forward="true" selection-start-line="123" selection-start-column="58" selection-end-line="123" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

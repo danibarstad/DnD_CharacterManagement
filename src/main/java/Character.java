@@ -13,7 +13,8 @@ public class Character {
     private String equipment;
     private String spells;
 
-    Character(String p, String ch, String g, int c, int r, int a, int l, boolean npc, String bg, String eq, String sp) {
+    Character(String p, String ch, String g, int c, int r, int a,
+              int l, boolean npc, String bg, String eq, String sp) {
         playerName = p;
         characterName = ch;
         gameName = g;
@@ -32,6 +33,10 @@ public class Character {
         playerName = p;
         characterName = ch;
         gameName = g;
+    }
+
+    Character() {
+
     }
 
     public int getId() {

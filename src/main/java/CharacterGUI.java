@@ -96,7 +96,6 @@ public class CharacterGUI extends JFrame {
                     Character characterRecord = new Character(playerName, characterName, gameName, classIndex,
                             raceIndex, alignmentIndex, levelIndex, npcCheck, background, equipment, spells);
 
-                    // calling NullPointException, but I'm unsure why.
                     controller.addToDatabase(characterRecord);
 
                     ArrayList<Character> allData = controller.getAllData();
@@ -146,11 +145,33 @@ public class CharacterGUI extends JFrame {
         });
 
         pack();
+
         characterTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                int row = characterTable.getSelectedRow();
+                int col = 0;
+                int cell = Integer.parseInt(tableModel.getValueAt(row, col).toString());
+
+                Character selection = controller.fillText(cell);
+
+                playerText.setText(selection.getPlayerName());
+                characterText.setText(selection.getCharacterName());
+                gameText.setText(selection.getGameName());
+                classCombo.setSelectedIndex(selection.getClassIndex());
+                raceCombo.setSelectedIndex(selection.getRaceIndex());
+                alignmentCombo.setSelectedIndex(selection.getAlignmentIndex());
+                levelCombo.setSelectedIndex(selection.getLevelIndex());
+                npc.setSelected(selection.isNpcCheck());
+                backgroundArea.setText(selection.getBackground());
+                equipmentArea.setText(selection.getEquipment());
+                spellsArea.setText(selection.getSpells());
+            }
         });
     }
 
-     private boolean isPresent(String name, String text) {
+    private boolean isPresent(String name, String text) {
 
         if (! text.equals("")) {
             return true;

@@ -235,7 +235,9 @@
             <properties>
               <editable value="true"/>
               <lineWrap value="true"/>
+              <minimumSize width="159" height="17"/>
               <nextFocusableComponent value="56ec8"/>
+              <preferredSize width="159" height="17"/>
               <wrapStyleWord value="false"/>
             </properties>
           </component>
@@ -251,6 +253,7 @@
           <component id="56ec8" class="javax.swing.JTextArea" binding="equipmentArea">
             <constraints/>
             <properties>
+              <dragEnabled value="false"/>
               <lineWrap value="true"/>
               <nextFocusableComponent value="7df17"/>
             </properties>

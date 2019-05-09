@@ -1,5 +1,6 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.net.URI;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -70,7 +71,7 @@ public class CharacterDB {
         String deleteSql = "DELETE FROM characters WHERE id = ?";
 
         try (Connection connection = DriverManager.getConnection(DB_URL);
-        PreparedStatement deletePs = connection.prepareStatement(deleteSql)) {
+            PreparedStatement deletePs = connection.prepareStatement(deleteSql)) {
 
             deletePs.setInt(1, ide);
             deletePs.execute();
@@ -86,12 +87,12 @@ public class CharacterDB {
         ArrayList<Character> allCharacters = new ArrayList<Character>();
 
         try (Connection connection = DriverManager.getConnection(DB_URL);
-        Statement statement = connection.createStatement()) {
+            Statement statement = connection.createStatement()) {
             String selectAllSQL = "SELECT * FROM characters";
             ResultSet rsAll = statement.executeQuery(selectAllSQL);
 
             while (rsAll.next()) {
-                int ide = rsAll.getInt("id");
+                int ide = rsAll.getInt(ID_COL);
                 String player = rsAll.getString(PLAYER_COL);
                 String character = rsAll.getString(CHARACTER_COL);
                 String game = rsAll.getString(GAME_COL);
@@ -102,6 +103,47 @@ public class CharacterDB {
             rsAll.close();
 
             return allCharacters;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    Character fillTextField(int i) {
+
+        Character index = new Character();
+        String selectCharacterSQL = "SELECT * FROM characters WHERE id LIKE ?";
+
+        try (Connection connection = DriverManager.getConnection(DB_URL);
+            PreparedStatement statement = connection.prepareStatement(selectCharacterSQL)) {
+
+            statement.setInt(1, i);
+            ResultSet rsAll = statement.executeQuery();
+
+            while (rsAll.next()) {
+                String player = rsAll.getString(PLAYER_COL);
+                String character = rsAll.getString(CHARACTER_COL);
+                String game = rsAll.getString(GAME_COL);
+                int classIndex = rsAll.getInt("classBox");
+                int raceIndex = rsAll.getInt("raceBox");
+                int alignmentIndex = rsAll.getInt("alignmentBox");
+                int levelIndex = rsAll.getInt("levelBox");
+                boolean npcCheck = rsAll.getBoolean("npcBox");
+                String background = rsAll.getString("backgroundArea");
+                String equipment = rsAll.getString("equipmentArea");
+                String spells = rsAll.getString("spellsArea");
+
+                index = new Character(player, character, game, classIndex, raceIndex, alignmentIndex, levelIndex,
+                        npcCheck, background, equipment, spells);
+            }
+
+            rsAll.close();
+
+            if (! index.equals(null)) {
+                return index;
+            } else {
+                return null;
+            }
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

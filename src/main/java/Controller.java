@@ -29,4 +29,6 @@ public class Controller {
     void deleteCharacter(int ide){
         db.deleteCharacter(ide);
     }
+
+    Character fillText(int ide) { return db.fillTextField(ide); }
 }
