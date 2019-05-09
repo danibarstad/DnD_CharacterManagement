@@ -1,3 +1,5 @@
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -5,6 +7,7 @@ public class CharacterDB {
 
     static final String DB_URL = "jdbc:sqlite:character.db";
 
+    static final String ID_COL = "id";
     static final String PLAYER_COL = "playerName";
     static final String CHARACTER_COL = "characterName";
     static final String GAME_COL = "gameName";
@@ -62,14 +65,14 @@ public class CharacterDB {
         }
     }
 
-    protected static void deleteCharacter(String name) {
+    void deleteCharacter(int ide) {
 
-        String deleteSql = "DELETE FROM characters WHERE playerName = ?";
+        String deleteSql = "DELETE FROM characters WHERE id = ?";
 
         try (Connection connection = DriverManager.getConnection(DB_URL);
         PreparedStatement deletePs = connection.prepareStatement(deleteSql)) {
 
-            deletePs.setString(1, name);
+            deletePs.setInt(1, ide);
             deletePs.execute();
 
         } catch (SQLException e) {
@@ -88,10 +91,11 @@ public class CharacterDB {
             ResultSet rsAll = statement.executeQuery(selectAllSQL);
 
             while (rsAll.next()) {
+                int ide = rsAll.getInt("id");
                 String player = rsAll.getString(PLAYER_COL);
                 String character = rsAll.getString(CHARACTER_COL);
                 String game = rsAll.getString(GAME_COL);
-                Character characterRecord = new Character(player, character, game);
+                Character characterRecord = new Character(ide, player, character, game);
                 allCharacters.add(characterRecord);
             }
 

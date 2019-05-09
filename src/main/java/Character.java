@@ -1,5 +1,6 @@
 public class Character {
 
+    private int id;
     private String playerName;
     private String characterName;
     private String gameName;
@@ -26,11 +27,20 @@ public class Character {
         spells = sp;
     }
 
-//    Character(String p, String ch, String g) {
-//        playerName = p;
-//        characterName = ch;
-//        gameName = g;
-//    }
+    Character(int i, String p, String ch, String g) {
+        id = i;
+        playerName = p;
+        characterName = ch;
+        gameName = g;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getPlayerName() {
         return playerName;
@@ -120,8 +130,8 @@ public class Character {
         this.spells = spells;
     }
 
-    @Override
-    public String toString() {
-        return "PLAYER: " + playerName + "\t\tCHARACTER: " + characterName + "\t\tGAME: " + gameName;
-    }
+//    @Override
+//    public String toString() {
+//        return "PLAYER: " + playerName + "\t\tCHARACTER: " + characterName + "\t\tGAME: " + gameName;
+//    }
 }

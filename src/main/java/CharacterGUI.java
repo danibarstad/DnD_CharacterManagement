@@ -56,6 +56,7 @@ public class CharacterGUI extends JFrame {
 
         DefaultTableModel tableModel = new DefaultTableModel();
 
+        tableModel.addColumn("ID");
         tableModel.addColumn("Player");
         tableModel.addColumn("Character");
         tableModel.addColumn("Game");
@@ -118,8 +119,14 @@ public class CharacterGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                //CharacterDB.deleteCharacter();
-                characterTable.getSelectedRow();
+                int selectedRow = characterTable.getSelectedRow();
+                int column = 0;
+                int cell = Integer.parseInt(tableModel.getValueAt(selectedRow, column).toString());
+
+                controller.deleteCharacter(cell);
+
+                ArrayList<Character> allData = controller.getAllData();
+                setTableData(allData);
             }
         });
 
@@ -224,7 +231,8 @@ public class CharacterGUI extends JFrame {
 
         if (data != null) {
             for (Character character : data) {
-                tableModel.addRow(new Character[]{character});
+                tableModel.addRow(new String[]{Integer.toString(character.getId()), character.getPlayerName(),
+                        character.getCharacterName(), character.getGameName()});
             }
         }
     }

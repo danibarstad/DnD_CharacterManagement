@@ -198,7 +198,10 @@
         <children>
           <component id="ae3ce" class="javax.swing.JTable" binding="characterTable">
             <constraints/>
-            <properties/>
+            <properties>
+              <autoResizeMode value="4"/>
+              <enabled value="true"/>
+            </properties>
           </component>
         </children>
       </scrollpane>

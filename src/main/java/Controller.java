@@ -25,4 +25,8 @@ public class Controller {
     void addToDatabase(Character character) {
         db.addCharacter(character);
     }
+
+    void deleteCharacter(int ide){
+        db.deleteCharacter(ide);
+    }
 }
