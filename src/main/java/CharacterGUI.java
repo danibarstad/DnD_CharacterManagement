@@ -21,23 +21,24 @@ public class CharacterGUI extends JFrame {
     private JButton updateButton;
     private JButton deleteButton;
     private JTable characterTable;
-    private JButton saveButton;
     private JButton clearButton;
     private JLabel playerNameLabel;
     private JLabel characterNameLabel;
     private JLabel gameNameLabel;
+    private JButton deleteAllButton;
+    private JButton characterReportButton;
 
     // fill the combo boxes
-    private static final String[] CLASS_ARRAY = {"N/A", "Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk",
+    protected static final String[] CLASS_ARRAY = {"N/A", "Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk",
             "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard"};
 
-    private static final String[] RACE_ARRAY = {"N/A", "Dragonborn", "Dwarf", "Elf", "Gnome", "Half Elf", "Half Orc",
+    protected static final String[] RACE_ARRAY = {"N/A", "Dragonborn", "Dwarf", "Elf", "Gnome", "Half Elf", "Half Orc",
             "Halfling", "Human", "Tiefling"};
 
-    private static final String [] ALIGNMENT_ARRAY = {"N/A", "Lawful Good", "Neutral Good", "Chaotic Good",
+    protected static final String [] ALIGNMENT_ARRAY = {"N/A", "Lawful Good", "Neutral Good", "Chaotic Good",
             "Lawful Neutral", "Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"};
 
-    private static final String[] LEVEL_ARRAY = {"N/A", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+    protected static final String[] LEVEL_ARRAY = {"N/A", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
             "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"};
 
     private Controller controller;
@@ -69,33 +70,9 @@ public class CharacterGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String playerName = playerText.getText();
-                String characterName = characterText.getText();
-                String gameName = gameText.getText();
+                Character characterRecord = getCharacter();
 
-                int classIndex = classCombo.getSelectedIndex();
-                int raceIndex = raceCombo.getSelectedIndex();
-                int alignmentIndex = alignmentCombo.getSelectedIndex();
-                int levelIndex = levelCombo.getSelectedIndex();
-
-                boolean npcCheck;
-                if (npc.isSelected()){
-                    npcCheck = true;
-                } else {
-                    npcCheck = false;
-                }
-
-                String background = backgroundArea.getText();
-                String equipment = equipmentArea.getText();
-                String spells = spellsArea.getText();
-
-                if (isPresent(playerNameLabel.getText(), playerName) &&
-                        isPresent(characterNameLabel.getText(), characterName) &&
-                        isPresent(gameNameLabel.getText(), gameName)){
-
-                    Character characterRecord = new Character(playerName, characterName, gameName, classIndex,
-                            raceIndex, alignmentIndex, levelIndex, npcCheck, background, equipment, spells);
-
+                if (characterRecord != null) {
                     controller.addToDatabase(characterRecord);
 
                     ArrayList<Character> allData = controller.getAllData();
@@ -110,7 +87,19 @@ public class CharacterGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                if (characterTable.getRowCount() > 0) {
+                    int cell = getCell();
 
+                    Character characterRecord = getCharacter();
+
+                    controller.updateCharacter(cell, characterRecord);
+
+                    ArrayList<Character> allData = controller.getAllData();
+                    setTableData(allData);
+                } else {
+                    showMessageDialog("No characters to update.",
+                            "UPDATE ERROR", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
 
@@ -118,14 +107,20 @@ public class CharacterGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                int selectedRow = characterTable.getSelectedRow();
-                int column = 0;
-                int cell = Integer.parseInt(tableModel.getValueAt(selectedRow, column).toString());
+                if (characterTable.getRowCount() > 0) {
+                    int cell = getCell();
 
-                controller.deleteCharacter(cell);
+                    controller.deleteCharacter(cell);
 
-                ArrayList<Character> allData = controller.getAllData();
-                setTableData(allData);
+                    ArrayList<Character> allData = controller.getAllData();
+                    setTableData(allData);
+
+                    clearAll();
+                } else {
+                    showMessageDialog("There is nothing to delete.",
+                            "DELETION ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+
             }
         });
 
@@ -137,22 +132,45 @@ public class CharacterGUI extends JFrame {
             }
         });
 
-        saveButton.addActionListener(new ActionListener() {
+        deleteAllButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                if (characterTable.getRowCount() < 1) {
+                    showMessageDialog("The table is already empty",
+                            "DELETE ALL ERROR", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    controller.deleteAllCharacter();
+
+                    ArrayList<Character> allData = controller.getAllData();
+                    setTableData(allData);
+
+                    clearAll();
+                }
             }
         });
 
-        pack();
+        characterReportButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if (characterTable.getRowCount() > 0) {
+                    Character characterReport = getCharacter();
+
+                    ReportGUI report = new ReportGUI(characterReport);
+                } else {
+                    showMessageDialog("There are no characters.",
+                            "CHARACTER REPORT ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
 
         characterTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                int row = characterTable.getSelectedRow();
-                int col = 0;
-                int cell = Integer.parseInt(tableModel.getValueAt(row, col).toString());
+
+                int cell = getCell();
 
                 Character selection = controller.fillText(cell);
 
@@ -169,6 +187,18 @@ public class CharacterGUI extends JFrame {
                 spellsArea.setText(selection.getSpells());
             }
         });
+
+        pack();
+    }
+
+    private boolean isChecked(String p, String c, String g) {
+
+        if (isPresent(playerNameLabel.getText(), p)         &&
+                isPresent(characterNameLabel.getText(), c)  &&
+                isPresent(gameNameLabel.getText(), g)) {
+            return true;
+        }
+        return false;
     }
 
     private boolean isPresent(String name, String text) {
@@ -179,6 +209,43 @@ public class CharacterGUI extends JFrame {
             showMessageDialog(name + " cannot be left blank.", "ERROR", JOptionPane.ERROR_MESSAGE);
             return false;
         }
+    }
+
+    private int getCell() {
+
+        int selectedRow = characterTable.getSelectedRow();
+        int column = 0;
+
+        return Integer.parseInt(characterTable.getValueAt(selectedRow, column).toString());
+    }
+
+    private Character getCharacter() {
+
+        String playerName = playerText.getText();
+        String characterName = characterText.getText();
+        String gameName = gameText.getText();
+
+        int classIndex = classCombo.getSelectedIndex();
+        int raceIndex = raceCombo.getSelectedIndex();
+        int alignmentIndex = alignmentCombo.getSelectedIndex();
+        int levelIndex = levelCombo.getSelectedIndex();
+
+        boolean npcCheck;
+        if (npc.isSelected()){
+            npcCheck = true;
+        } else {
+            npcCheck = false;
+        }
+
+        String background = backgroundArea.getText();
+        String equipment = equipmentArea.getText();
+        String spells = spellsArea.getText();
+
+        if (isChecked(playerName, characterName, gameName)){
+            return new Character(playerName, characterName, gameName, classIndex,
+                    raceIndex, alignmentIndex, levelIndex, npcCheck, background, equipment, spells);
+        }
+        return null;
     }
 
     private void clearAll() {
@@ -198,7 +265,9 @@ public class CharacterGUI extends JFrame {
         equipmentArea.setText("");
         spellsArea.setText("");
 
-        characterTable.setRowSelectionInterval(0, 0);
+        if (characterTable.getRowCount() > 0) {
+            characterTable.setRowSelectionInterval(0, 0);
+        }
     }
 
     private void fetchCombo() {

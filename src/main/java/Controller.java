@@ -30,5 +30,13 @@ public class Controller {
         db.deleteCharacter(ide);
     }
 
+    void updateCharacter(int ide, Character character) {
+        db.updateCharacter(ide, character);
+    }
+
+    void deleteAllCharacter() {
+        db.deleteAll();
+    }
+
     Character fillText(int ide) { return db.fillTextField(ide); }
 }

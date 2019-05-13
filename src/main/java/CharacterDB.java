@@ -66,15 +66,63 @@ public class CharacterDB {
         }
     }
 
+    void updateCharacter(int ide, Character character) {
+
+        final String updateSql = "UPDATE characters SET playerName = ?, characterName = ?, gameName = ?, " +
+                "classBox = ?, raceBox = ?, alignmentBox = ?, levelBox = ?, npcBox = ?, backgroundArea = ?, " +
+                "equipmentArea = ?, spellsArea = ? WHERE id = ?";
+
+        try (Connection connection = DriverManager.getConnection(DB_URL);
+            PreparedStatement updatePs = connection.prepareStatement(updateSql)) {
+
+            updatePs.setString(1, character.getPlayerName());
+            updatePs.setString(2, character.getCharacterName());
+            updatePs.setString(3, character.getGameName());
+
+            updatePs.setInt(4, character.getClassIndex());
+            updatePs.setInt(5, character.getRaceIndex());
+            updatePs.setInt(6, character.getAlignmentIndex());
+            updatePs.setInt(7, character.getLevelIndex());
+
+            updatePs.setBoolean(8, character.isNpcCheck());
+
+            updatePs.setString(9, character.getBackground());
+            updatePs.setString(10, character.getEquipment());
+            updatePs.setString(11, character.getSpells());
+            updatePs.setInt(12, ide);
+
+            updatePs.executeUpdate();
+
+        } catch (SQLException e) {
+
+            throw new RuntimeException(e);
+        }
+    }
+
     void deleteCharacter(int ide) {
 
-        String deleteSql = "DELETE FROM characters WHERE id = ?";
+        final String deleteSql = "DELETE FROM characters WHERE id = ?";
 
         try (Connection connection = DriverManager.getConnection(DB_URL);
             PreparedStatement deletePs = connection.prepareStatement(deleteSql)) {
 
             deletePs.setInt(1, ide);
             deletePs.execute();
+
+        } catch (SQLException e) {
+
+            throw new RuntimeException(e);
+        }
+    }
+
+    void deleteAll() {
+
+        final String deleteAllSql = "DELETE FROM characters";
+
+        try (Connection connection = DriverManager.getConnection(DB_URL);
+            PreparedStatement dropPs = connection.prepareStatement(deleteAllSql)) {
+
+            dropPs.executeUpdate();
 
         } catch (SQLException e) {
 
@@ -139,13 +187,10 @@ public class CharacterDB {
 
             rsAll.close();
 
-            if (! index.equals(null)) {
-                return index;
-            } else {
-                return null;
-            }
+            return index;
 
         } catch (SQLException e) {
+
             throw new RuntimeException(e);
         }
     }

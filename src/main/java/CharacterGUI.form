@@ -13,7 +13,7 @@
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Player Name"/>
+          <text value="Player Name*"/>
         </properties>
       </component>
       <component id="192da" class="javax.swing.JTextField" binding="playerText">
@@ -31,7 +31,7 @@
           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Character Name"/>
+          <text value="Character Name*"/>
         </properties>
       </component>
       <component id="2aa2" class="javax.swing.JTextField" binding="characterText">
@@ -49,7 +49,7 @@
           <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Game Name"/>
+          <text value="Game Name*"/>
         </properties>
       </component>
       <component id="bfdc2" class="javax.swing.JTextField" binding="gameText">
@@ -205,21 +205,11 @@
           </component>
         </children>
       </scrollpane>
-      <component id="90305" class="javax.swing.JButton" binding="saveButton" default-binding="true">
-        <constraints>
-          <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <nextFocusableComponent value="192da"/>
-          <text value="Save"/>
-        </properties>
-      </component>
       <component id="b9b00" class="javax.swing.JButton" binding="clearButton" default-binding="true">
         <constraints>
           <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <nextFocusableComponent value="90305"/>
           <text value="Clear"/>
         </properties>
       </component>
@@ -227,7 +217,11 @@
         <constraints>
           <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <autoscrolls value="false"/>
+          <horizontalScrollBarPolicy value="30"/>
+          <verticalScrollBarPolicy value="20"/>
+        </properties>
         <border type="none"/>
         <children>
           <component id="52ce3" class="javax.swing.JTextArea" binding="backgroundArea">
@@ -255,7 +249,9 @@
             <properties>
               <dragEnabled value="false"/>
               <lineWrap value="true"/>
+              <minimumSize width="159" height="17"/>
               <nextFocusableComponent value="7df17"/>
+              <preferredSize width="159" height="17"/>
             </properties>
           </component>
         </children>
@@ -271,7 +267,9 @@
             <constraints/>
             <properties>
               <lineWrap value="true"/>
+              <minimumSize width="157" height="17"/>
               <nextFocusableComponent value="a8cbf"/>
+              <preferredSize width="157" height="17"/>
             </properties>
           </component>
         </children>
@@ -283,6 +281,22 @@
         <properties>
           <model/>
           <nextFocusableComponent value="e5087"/>
+        </properties>
+      </component>
+      <component id="36e49" class="javax.swing.JButton" binding="deleteAllButton" default-binding="true">
+        <constraints>
+          <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Delete All"/>
+        </properties>
+      </component>
+      <component id="3e980" class="javax.swing.JButton" binding="characterReportButton" default-binding="true">
+        <constraints>
+          <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Character Report"/>
         </properties>
       </component>
     </children>
