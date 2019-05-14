@@ -136,7 +136,7 @@ public class CharacterDB {
 
         try (Connection connection = DriverManager.getConnection(DB_URL);
             Statement statement = connection.createStatement()) {
-            String selectAllSQL = "SELECT * FROM characters";
+            String selectAllSQL = "SELECT * FROM characters ORDER BY gameName";
             ResultSet rsAll = statement.executeQuery(selectAllSQL);
 
             while (rsAll.next()) {

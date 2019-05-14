@@ -1,37 +1,35 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ReportGUI extends JFrame{
     private JPanel mainPanel;
-    private JCheckBox npcCheck;
-    private JTextArea backgroundArea;
-    private JTextArea equipmentArea;
-    private JTextArea spellsArea;
-    private JLabel playerLabel;
-    private JLabel characterLabel;
-    private JLabel gameLabel;
-    private JLabel classLabel;
-    private JLabel raceLabel;
-    private JLabel alignmentLabel;
-    private JLabel levelLabel;
+    private JTextField newGame;
+    private JButton addButton;
 
-    ReportGUI(Character character) {
+    private CharacterGUI characterGUI;
+
+    ReportGUI(CharacterGUI characterGUI) {
+        this.characterGUI = characterGUI;
 
         setContentPane(mainPanel);
-        setTitle("Character Report");
+        setTitle("New Game");
         setVisible(true);
+        characterGUI.setEnabled(false);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         pack();
 
-        playerLabel.setText("Player: " + character.getPlayerName());
-        characterLabel.setText("Character: " + character.getCharacterName());
-        gameLabel.setText("Game: " + character.getGameName());
-        classLabel.setText("Class: " + CharacterGUI.CLASS_ARRAY[character.getClassIndex()]);
-        raceLabel.setText("Race: " + CharacterGUI.RACE_ARRAY[character.getRaceIndex()]);
-        alignmentLabel.setText("Alignment: " + CharacterGUI.ALIGNMENT_ARRAY[character.getAlignmentIndex()]);
-        levelLabel.setText("Level: " + CharacterGUI.LEVEL_ARRAY[character.getLevelIndex()]);
-        npcCheck.setSelected(character.isNpcCheck());
-        backgroundArea.setText(character.getBackground());
-        equipmentArea.setText(character.getEquipment());
-        spellsArea.setText(character.getSpells());
+        addButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String gameName = newGame.getText();
+                characterGUI.GAME_ARRAY.add(gameName);
+                characterGUI.fetchCombo();
+
+                characterGUI.setEnabled(true);
+                ReportGUI.this.dispose();
+            }
+        });
     }
 }

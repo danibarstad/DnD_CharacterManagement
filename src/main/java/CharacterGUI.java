@@ -26,6 +26,8 @@ public class CharacterGUI extends JFrame {
     private JLabel characterNameLabel;
     private JLabel gameNameLabel;
     private JButton deleteAllButton;
+    private JButton addNewGameButton;
+    private JComboBox gameName;
 
     // arrays used for combo boxes
     protected static final String[] CLASS_ARRAY = {"N/A", "Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk",
@@ -39,6 +41,8 @@ public class CharacterGUI extends JFrame {
 
     protected static final String[] LEVEL_ARRAY = {"N/A", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
             "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"};
+
+    protected ArrayList<String> GAME_ARRAY = new ArrayList<>();
 
     private Controller controller;
 
@@ -149,6 +153,14 @@ public class CharacterGUI extends JFrame {
             }
         });
 
+        addNewGameButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                ReportGUI addNewGame = new ReportGUI(CharacterGUI.this);
+            }
+        });
+
         characterTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -254,7 +266,7 @@ public class CharacterGUI extends JFrame {
         }
     }
 
-    private void fetchCombo() {
+    protected void fetchCombo() {
 
         for (String c : CLASS_ARRAY) {
             classCombo.addItem(c);
@@ -270,6 +282,10 @@ public class CharacterGUI extends JFrame {
 
         for (String l : LEVEL_ARRAY) {
             levelCombo.addItem(l);
+        }
+
+        for (String g : GAME_ARRAY) {
+            gameName.addItem(g);
         }
     }
 
