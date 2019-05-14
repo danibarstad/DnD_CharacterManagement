@@ -7,14 +7,17 @@ import java.util.ArrayList;
 public class CharacterDB {
 
     private static final String DB_URL = "jdbc:sqlite:character.db";
+    private static final String GAME_DB_URL = "jdbc:sqlite:game.db";
 
     private static final String ID_COL = "id";
     private static final String PLAYER_COL = "playerName";
     private static final String CHARACTER_COL = "characterName";
     private static final String GAME_COL = "gameName";
+    private static final String GAME_TABLE_COL = "game";
 
     CharacterDB(){
         createTable();
+        createNewTable();
     }
 
     private static void createTable() {
@@ -27,6 +30,19 @@ public class CharacterDB {
                     "equipmentArea TEXT, spellsArea TEXT)";
 
             statement.executeUpdate(createCharacterTable);
+
+        } catch (SQLException e) {
+
+            throw new RuntimeException(e);
+        }
+    }
+    private static void createNewTable() {
+        try (Connection connection = DriverManager.getConnection(GAME_DB_URL);
+            Statement statement = connection.createStatement()) {
+
+            String createGameTable = "CREATE TABLE IF NOT EXISTS games (gameName TEXT)";
+
+            statement.executeUpdate(createGameTable);
 
         } catch (SQLException e) {
 
@@ -62,6 +78,21 @@ public class CharacterDB {
 
         } catch (SQLException e) {
 
+            throw new RuntimeException(e);
+        }
+    }
+
+    void addGameToDatabase(String g) {
+        final String addGameSql = "INSERT INTO games VALUES ( ? )";
+
+        try (Connection connection = DriverManager.getConnection(GAME_DB_URL);
+            PreparedStatement gamePs = connection.prepareStatement(addGameSql)) {
+
+            gamePs.setString(1, g);
+
+            gamePs.execute();
+
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
@@ -130,12 +161,38 @@ public class CharacterDB {
         }
     }
 
+    ArrayList<String> fetchAllGames() {
+
+        ArrayList<String> allGames = new ArrayList<>();
+
+        try (Connection connection = DriverManager.getConnection(GAME_DB_URL);
+            Statement statement = connection.createStatement()) {
+
+            String selectGameSql = "SELECT * FROM games";
+            ResultSet rsGame = statement.executeQuery(selectGameSql);
+
+            while (rsGame.next()) {
+                String game = rsGame.getString(GAME_COL);
+                allGames.add(game);
+
+            }
+
+            rsGame.close();
+
+            return allGames;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     ArrayList<Character> fetchAllCharacters() {
 
         ArrayList<Character> allCharacters = new ArrayList<Character>();
 
         try (Connection connection = DriverManager.getConnection(DB_URL);
             Statement statement = connection.createStatement()) {
+
             String selectAllSQL = "SELECT * FROM characters ORDER BY gameName";
             ResultSet rsAll = statement.executeQuery(selectAllSQL);
 

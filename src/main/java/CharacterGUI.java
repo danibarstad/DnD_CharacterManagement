@@ -42,8 +42,6 @@ public class CharacterGUI extends JFrame {
     protected static final String[] LEVEL_ARRAY = {"N/A", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
             "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"};
 
-    protected ArrayList<String> GAME_ARRAY = new ArrayList<>();
-
     private Controller controller;
 
 
@@ -157,7 +155,10 @@ public class CharacterGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                ReportGUI addNewGame = new ReportGUI(CharacterGUI.this);
+                GameGUI addNewGame = new GameGUI(CharacterGUI.this, controller);
+
+                ArrayList<String> allGames = controller.getAllGames();
+                setGameCombo(allGames);
             }
         });
 
@@ -266,7 +267,7 @@ public class CharacterGUI extends JFrame {
         }
     }
 
-    protected void fetchCombo() {
+    private void fetchCombo() {
 
         for (String c : CLASS_ARRAY) {
             classCombo.addItem(c);
@@ -283,13 +284,9 @@ public class CharacterGUI extends JFrame {
         for (String l : LEVEL_ARRAY) {
             levelCombo.addItem(l);
         }
-
-        for (String g : GAME_ARRAY) {
-            gameName.addItem(g);
-        }
     }
 
-    private void showMessageDialog(String message, String title, int type) {
+    protected void showMessageDialog(String message, String title, int type) {
 
         JOptionPane.showMessageDialog(this, message, title, type);
     }
@@ -324,6 +321,13 @@ public class CharacterGUI extends JFrame {
                 tableModel.addRow(new String[]{Integer.toString(character.getId()), character.getPlayerName(),
                         character.getCharacterName(), character.getGameName()});
             }
+        }
+    }
+
+    void setGameCombo(ArrayList<String> data) {
+
+        for (String g : data) {
+            gameName.addItem(g);
         }
     }
 }
