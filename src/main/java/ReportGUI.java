@@ -4,7 +4,7 @@ public class ReportGUI extends JFrame{
     private JPanel mainPanel;
     private JCheckBox npcCheck;
     private JTextArea backgroundArea;
-    private JTextArea equipemtTextArea;
+    private JTextArea equipmentArea;
     private JTextArea spellsArea;
     private JLabel playerLabel;
     private JLabel characterLabel;
@@ -31,7 +31,7 @@ public class ReportGUI extends JFrame{
         levelLabel.setText("Level: " + CharacterGUI.LEVEL_ARRAY[character.getLevelIndex()]);
         npcCheck.setSelected(character.isNpcCheck());
         backgroundArea.setText(character.getBackground());
-        equipemtTextArea.setText(character.getEquipment());
+        equipmentArea.setText(character.getEquipment());
         spellsArea.setText(character.getSpells());
     }
 }

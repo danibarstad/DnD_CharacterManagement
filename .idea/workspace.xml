@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9f53f20-9cec-466e-8462-0519d5900747" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ReportGUI.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ReportGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Character.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/CharacterDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CharacterDB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/CharacterGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CharacterGUI.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/CharacterGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CharacterGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Character.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Character.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ReportGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ReportGUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ReportGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ReportGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/CharacterDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CharacterDB.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/CharacterGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CharacterGUI$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/CharacterGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CharacterGUI.class" afterDir="false" />
@@ -44,8 +43,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/CharacterDB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="45" selection-start-line="45" selection-end-line="45" />
+            <state relative-caret-position="221">
+              <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -56,8 +55,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+            <state relative-caret-position="477">
+              <caret line="41" column="1" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
               <folding>
                 <element signature="e#450#451#0" expanded="true" />
                 <element signature="e#496#497#0" expanded="true" />
@@ -71,8 +70,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Character.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="40" selection-start-line="40" selection-end-line="40" />
+            <state relative-caret-position="697">
+              <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -80,8 +79,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/CharacterGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2584">
-              <caret line="152" column="69" selection-start-line="152" selection-start-column="69" selection-end-line="152" selection-end-column="69" />
+            <state relative-caret-position="-2362">
+              <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#isChecked#0;class#CharacterGUI#0" />
@@ -91,7 +90,8 @@
                 <element signature="method#clearAll#0;class#CharacterGUI#0" />
                 <element signature="method#fetchCombo#0;class#CharacterGUI#0" />
                 <element signature="method#showMessageDialog#0;class#CharacterGUI#0" />
-                <element signature="method#tabOrder#0;class#CharacterGUI#0" />
+                <element signature="e#9846#10266#0" expanded="true" />
+                <element signature="e#10265#10266#0" expanded="true" />
                 <element signature="method#setTableData#0;class#CharacterGUI#0" />
               </folding>
             </state>
@@ -100,20 +100,6 @@
       </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/CharacterGUI.form">
-          <provider selected="true" editor-type-id="ui-designer" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ReportGUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ReportGUI.form">
           <provider selected="true" editor-type-id="ui-designer" />
         </entry>
       </file>
@@ -144,11 +130,11 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/DBConfig.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/78a8b4d4-6608-4e1e-b3b2-148c4a9b6b95/console.sql" />
-        <option value="$PROJECT_DIR$/src/main/java/Character.java" />
         <option value="$PROJECT_DIR$/src/main/java/Controller.java" />
+        <option value="$PROJECT_DIR$/src/main/java/CharacterDB.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Character.java" />
         <option value="$PROJECT_DIR$/src/main/java/ReportGUI.form" />
         <option value="$PROJECT_DIR$/src/main/java/ReportGUI.java" />
-        <option value="$PROJECT_DIR$/src/main/java/CharacterDB.java" />
         <option value="$PROJECT_DIR$/src/main/java/CharacterGUI.java" />
         <option value="$PROJECT_DIR$/src/main/java/CharacterGUI.form" />
       </list>
@@ -165,55 +151,7 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="FinalProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FinalProject" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FinalProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FinalProject" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FinalProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FinalProject" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FinalProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FinalProject" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FinalProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FinalProject" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="CharacterGUI" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="FinalProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FinalProject" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ReportGUI" type="e9f4de52:FormNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="sqlite" />
@@ -281,7 +219,7 @@
       <workItem from="1557597071270" duration="20000" />
       <workItem from="1557597230211" duration="11842000" />
       <workItem from="1557715769830" duration="5073000" />
-      <workItem from="1557770076456" duration="720000" />
+      <workItem from="1557770076456" duration="7085000" />
     </task>
     <task id="LOCAL-00001" summary="setup GUI, etc">
       <created>1556761022522</created>
@@ -346,15 +284,21 @@
       <option name="project" value="LOCAL" />
       <updated>1557377679022</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Trouble with JScrollPane for background, equipment, and spells text area">
+      <created>1557771099955</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1557771099955</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72836000" />
+    <option name="totallyTimeSpent" value="79147000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-172" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.17473525" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -401,7 +345,8 @@
     <MESSAGE value="Can add new characters to database &amp; GUI but the formatting is wrong.&#10;Need to reformat to work with JTable and not JList." />
     <MESSAGE value="JTable formatting is working. Delete button is working.&#10;Starting on Update button." />
     <MESSAGE value="Text field and combo boxes now fill with appropriate database data.&#10;Starting on Update button." />
-    <option name="LAST_COMMIT_MESSAGE" value="Text field and combo boxes now fill with appropriate database data.&#10;Starting on Update button." />
+    <MESSAGE value="Trouble with JScrollPane for background, equipment, and spells text area" />
+    <option name="LAST_COMMIT_MESSAGE" value="Trouble with JScrollPane for background, equipment, and spells text area" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pom.xml">
@@ -429,20 +374,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/78a8b4d4-6608-4e1e-b3b2-148c4a9b6b95/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/CharacterDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
+        <state relative-caret-position="221">
+          <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ReportGUI.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ReportGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="50" lean-forward="true" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+        <state relative-caret-position="477">
+          <caret line="41" column="1" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
           <folding>
             <element signature="e#450#451#0" expanded="true" />
             <element signature="e#496#497#0" expanded="true" />
@@ -454,32 +416,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Character.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ReportGUI.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/78a8b4d4-6608-4e1e-b3b2-148c4a9b6b95/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ReportGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="697">
+          <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/CharacterGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2584">
-          <caret line="152" column="69" selection-start-line="152" selection-start-column="69" selection-end-line="152" selection-end-column="69" />
+        <state relative-caret-position="-2362">
+          <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#isChecked#0;class#CharacterGUI#0" />
@@ -489,7 +434,8 @@
             <element signature="method#clearAll#0;class#CharacterGUI#0" />
             <element signature="method#fetchCombo#0;class#CharacterGUI#0" />
             <element signature="method#showMessageDialog#0;class#CharacterGUI#0" />
-            <element signature="method#tabOrder#0;class#CharacterGUI#0" />
+            <element signature="e#9846#10266#0" expanded="true" />
+            <element signature="e#10265#10266#0" expanded="true" />
             <element signature="method#setTableData#0;class#CharacterGUI#0" />
           </folding>
         </state>

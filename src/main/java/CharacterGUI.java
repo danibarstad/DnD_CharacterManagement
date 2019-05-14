@@ -26,9 +26,8 @@ public class CharacterGUI extends JFrame {
     private JLabel characterNameLabel;
     private JLabel gameNameLabel;
     private JButton deleteAllButton;
-    private JButton characterReportButton;
 
-    // fill the combo boxes
+    // arrays used for combo boxes
     protected static final String[] CLASS_ARRAY = {"N/A", "Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk",
             "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard"};
 
@@ -146,21 +145,6 @@ public class CharacterGUI extends JFrame {
                     setTableData(allData);
 
                     clearAll();
-                }
-            }
-        });
-
-        characterReportButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                if (characterTable.getRowCount() > 0) {
-                    Character characterReport = getCharacter();
-
-                    ReportGUI report = new ReportGUI(characterReport);
-                } else {
-                    showMessageDialog("There are no characters.",
-                            "CHARACTER REPORT ERROR", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });

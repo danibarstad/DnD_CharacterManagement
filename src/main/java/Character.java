@@ -134,9 +134,4 @@ public class Character {
     public void setSpells(String spells) {
         this.spells = spells;
     }
-
-//    @Override
-//    public String toString() {
-//        return "PLAYER: " + playerName + "\t\tCHARACTER: " + characterName + "\t\tGAME: " + gameName;
-//    }
 }

@@ -6,12 +6,12 @@ import java.util.ArrayList;
 
 public class CharacterDB {
 
-    static final String DB_URL = "jdbc:sqlite:character.db";
+    private static final String DB_URL = "jdbc:sqlite:character.db";
 
-    static final String ID_COL = "id";
-    static final String PLAYER_COL = "playerName";
-    static final String CHARACTER_COL = "characterName";
-    static final String GAME_COL = "gameName";
+    private static final String ID_COL = "id";
+    private static final String PLAYER_COL = "playerName";
+    private static final String CHARACTER_COL = "characterName";
+    private static final String GAME_COL = "gameName";
 
     CharacterDB(){
         createTable();
