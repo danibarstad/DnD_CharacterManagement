@@ -156,9 +156,6 @@ public class CharacterGUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 GameGUI addNewGame = new GameGUI(CharacterGUI.this, controller);
-
-                ArrayList<String> allGames = controller.getAllGames();
-                setGameCombo(allGames);
             }
         });
 
@@ -325,6 +322,8 @@ public class CharacterGUI extends JFrame {
     }
 
     void setGameCombo(ArrayList<String> data) {
+
+        gameName.removeAllItems();
 
         for (String g : data) {
             gameName.addItem(g);

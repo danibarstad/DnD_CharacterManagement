@@ -13,7 +13,7 @@ public class CharacterDB {
     private static final String PLAYER_COL = "playerName";
     private static final String CHARACTER_COL = "characterName";
     private static final String GAME_COL = "gameName";
-    private static final String GAME_TABLE_COL = "game";
+//    private static final String GAME_TABLE_COL = "game";
 
     CharacterDB(){
         createTable();
@@ -172,6 +172,7 @@ public class CharacterDB {
             ResultSet rsGame = statement.executeQuery(selectGameSql);
 
             while (rsGame.next()) {
+
                 String game = rsGame.getString(GAME_COL);
                 allGames.add(game);
 
