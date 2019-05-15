@@ -22,6 +22,7 @@ public class GameGUI extends JFrame{
         characterGUI.setEnabled(false);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         pack();
+        setLocationRelativeTo(null);
 
         addButton.addActionListener(new ActionListener() {
             @Override

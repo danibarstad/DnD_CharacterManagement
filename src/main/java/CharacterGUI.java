@@ -1,5 +1,7 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import java.awt.event.*;
 import java.util.ArrayList;
 
@@ -8,7 +10,6 @@ public class CharacterGUI extends JFrame {
     private JPanel mainPanel;
     private JTextField playerText;
     private JTextField characterText;
-//    private JTextField gameText;
     private JComboBox classCombo;
     private JComboBox raceCombo;
     private JComboBox alignmentCombo;
@@ -50,13 +51,19 @@ public class CharacterGUI extends JFrame {
 
         setContentPane(mainPanel);
         setTitle("Game Master Character List");
+
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+
         tabOrder(spellsArea);
         tabOrder(equipmentArea);
         tabOrder(backgroundArea);
 
+        gameCombo.setPrototypeDisplayValue("..FIXES..COL..WIDTH..");
+
         DefaultTableModel tableModel = new DefaultTableModel();
+        characterTable.setModel(tableModel);
 
         tableModel.addColumn("ID");
         tableModel.addColumn("Player");
@@ -65,7 +72,9 @@ public class CharacterGUI extends JFrame {
 
         fetchCombo();
 
-        characterTable.setModel(tableModel);
+        pack();
+        setLocationRelativeTo(null);
+
 
         addButton.addActionListener(new ActionListener() {
             @Override
@@ -200,15 +209,13 @@ public class CharacterGUI extends JFrame {
                 spellsArea.setText(selection.getSpells());
             }
         });
-
-        pack();
     }
 
     private boolean isChecked(String p, String c, String g, int gi) {
 
         if (isPresent(playerNameLabel.getText(), p)         &&
                 isPresent(characterNameLabel.getText(), c)  &&
-                isPresent(gameNameLabel.getText(), g)       &&
+//                isPresent(gameNameLabel.getText(), g)       &&
                 isSelected(gameNameLabel.getText(), gi)) {
 
             return true;
@@ -375,5 +382,9 @@ public class CharacterGUI extends JFrame {
         for (String g : data) {
             gameCombo.addItem(g);
         }
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 }
