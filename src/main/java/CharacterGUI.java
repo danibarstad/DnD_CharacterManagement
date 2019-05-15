@@ -8,7 +8,7 @@ public class CharacterGUI extends JFrame {
     private JPanel mainPanel;
     private JTextField playerText;
     private JTextField characterText;
-    private JTextField gameText;
+//    private JTextField gameText;
     private JComboBox classCombo;
     private JComboBox raceCombo;
     private JComboBox alignmentCombo;
@@ -27,7 +27,7 @@ public class CharacterGUI extends JFrame {
     private JLabel gameNameLabel;
     private JButton deleteAllButton;
     private JButton addNewGameButton;
-    private JComboBox gameName;
+    private JComboBox gameCombo;
 
     // arrays used for combo boxes
     protected static final String[] CLASS_ARRAY = {"N/A", "Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk",
@@ -71,6 +71,7 @@ public class CharacterGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                // add character data to database and displays it in the jtable
                 Character characterRecord = getCharacter();
 
                 if (characterRecord != null) {
@@ -88,6 +89,7 @@ public class CharacterGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                // updates selected character
                 if (characterTable.getRowCount() > 0) {
                     int cell = getCell();
 
@@ -108,6 +110,7 @@ public class CharacterGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                // deletes character from database and reconfigures jtable
                 if (characterTable.getRowCount() > 0) {
                     int cell = getCell();
 
@@ -129,6 +132,7 @@ public class CharacterGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                // clears all text fields and comboboxes
                 clearAll();
             }
         });
@@ -137,16 +141,29 @@ public class CharacterGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                // removes ALL characters and games from database
+                // and clears all text fields, comboboxes, and jtable
                 if (characterTable.getRowCount() < 1) {
                     showMessageDialog("The table is already empty",
                             "DELETE ALL ERROR", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    controller.deleteAllCharacter();
 
-                    ArrayList<Character> allData = controller.getAllData();
-                    setTableData(allData);
+                    // asks user to confirm before deleting all data
+                    int input = showYesNoDialog("Are you sure? This will delete all existing data.",
+                            "CAUTION", JOptionPane.YES_NO_OPTION);
 
-                    clearAll();
+                    if (input == 0) {
+                        controller.deleteAllCharacter();
+                        controller.deleteGames();
+
+                        ArrayList<String> allGames = controller.getAllGames();
+                        setGameCombo(allGames);
+
+                        ArrayList<Character> allData = controller.getAllData();
+                        setTableData(allData);
+
+                        clearAll();
+                    }
                 }
             }
         });
@@ -155,10 +172,12 @@ public class CharacterGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                // calls second form to add game to combobox
                 GameGUI addNewGame = new GameGUI(CharacterGUI.this, controller);
             }
         });
 
+        // fills text fields and comboboxes with data from selected character in jtable
         characterTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -170,7 +189,7 @@ public class CharacterGUI extends JFrame {
 
                 playerText.setText(selection.getPlayerName());
                 characterText.setText(selection.getCharacterName());
-                gameText.setText(selection.getGameName());
+                gameCombo.setSelectedIndex(selection.getGameIndex());
                 classCombo.setSelectedIndex(selection.getClassIndex());
                 raceCombo.setSelectedIndex(selection.getRaceIndex());
                 alignmentCombo.setSelectedIndex(selection.getAlignmentIndex());
@@ -185,28 +204,45 @@ public class CharacterGUI extends JFrame {
         pack();
     }
 
-    private boolean isChecked(String p, String c, String g) {
+    private boolean isChecked(String p, String c, String g, int gi) {
 
         if (isPresent(playerNameLabel.getText(), p)         &&
                 isPresent(characterNameLabel.getText(), c)  &&
-                isPresent(gameNameLabel.getText(), g)) {
+                isPresent(gameNameLabel.getText(), g)       &&
+                isSelected(gameNameLabel.getText(), gi)) {
+
             return true;
         }
         return false;
     }
 
+    private boolean isSelected(String name, int sel) {
+
+        // checks that a selection for game name was made
+        if (sel != -1) {
+            return true;
+        } else {
+            showMessageDialog("You must make a selection for " + name,
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
+
     private boolean isPresent(String name, String text) {
 
+        // checks that player and character name were not left blank
         if (! text.equals("")) {
             return true;
         } else {
-            showMessageDialog(name + " cannot be left blank.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            showMessageDialog(name + " cannot be left blank.",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }
 
     private int getCell() {
 
+        // gets index for selected row
         int selectedRow = characterTable.getSelectedRow();
         int column = 0;
 
@@ -215,10 +251,12 @@ public class CharacterGUI extends JFrame {
 
     private Character getCharacter() {
 
+        // creates Character object
         String playerName = playerText.getText();
         String characterName = characterText.getText();
-        String gameName = gameText.getText();
+        String gameNameString = (String) gameCombo.getSelectedItem();
 
+        int gameName = gameCombo.getSelectedIndex();
         int classIndex = classCombo.getSelectedIndex();
         int raceIndex = raceCombo.getSelectedIndex();
         int alignmentIndex = alignmentCombo.getSelectedIndex();
@@ -235,8 +273,8 @@ public class CharacterGUI extends JFrame {
         String equipment = equipmentArea.getText();
         String spells = spellsArea.getText();
 
-        if (isChecked(playerName, characterName, gameName)){
-            return new Character(playerName, characterName, gameName, classIndex,
+        if (isChecked(playerName, characterName, gameNameString, gameName)){
+            return new Character(playerName, characterName, gameNameString, gameName, classIndex,
                     raceIndex, alignmentIndex, levelIndex, npcCheck, background, equipment, spells);
         }
         return null;
@@ -244,9 +282,9 @@ public class CharacterGUI extends JFrame {
 
     private void clearAll() {
 
+        // clears all text fields and comboboxes
         playerText.setText("");
         characterText.setText("");
-        gameText.setText("");
 
         classCombo.setSelectedIndex(0);
         raceCombo.setSelectedIndex(0);
@@ -266,6 +304,7 @@ public class CharacterGUI extends JFrame {
 
     private void fetchCombo() {
 
+        // fills combo boxes using global arrays
         for (String c : CLASS_ARRAY) {
             classCombo.addItem(c);
         }
@@ -281,6 +320,12 @@ public class CharacterGUI extends JFrame {
         for (String l : LEVEL_ARRAY) {
             levelCombo.addItem(l);
         }
+    }
+
+    private int showYesNoDialog(String message, String title, int type) {
+
+        int i = JOptionPane.showConfirmDialog(this, message, title, type);
+        return i;
     }
 
     protected void showMessageDialog(String message, String title, int type) {
@@ -310,6 +355,7 @@ public class CharacterGUI extends JFrame {
 
     void setTableData(ArrayList<Character> data) {
 
+        // builds jtable with data from database
         DefaultTableModel tableModel = (DefaultTableModel) characterTable.getModel();
         tableModel.setRowCount(0);
 
@@ -323,10 +369,11 @@ public class CharacterGUI extends JFrame {
 
     void setGameCombo(ArrayList<String> data) {
 
-        gameName.removeAllItems();
+        // fills game name combobox with data from database
+        gameCombo.removeAllItems();
 
         for (String g : data) {
-            gameName.addItem(g);
+            gameCombo.addItem(g);
         }
     }
 }

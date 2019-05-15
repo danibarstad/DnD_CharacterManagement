@@ -27,6 +27,8 @@ public class GameGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                // Takes user input for new game name and adds it to a database
+                // which fills the game combobox in the main form
                 if (! newGame.getText().equals("")) {
 
                     String gameName = newGame.getText();

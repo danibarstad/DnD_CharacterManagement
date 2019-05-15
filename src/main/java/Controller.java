@@ -9,6 +9,9 @@ public class Controller {
         new Controller().startApp();
     }
 
+
+    // builds jtable and game name combobox when the app first opens
+    // with any data in database
     private void startApp() {
         db = new CharacterDB();
 
@@ -19,6 +22,7 @@ public class Controller {
         gui.setTableData(allData);
         gui.setGameCombo(allGames);
     }
+
 
     ArrayList<Character> getAllData() {
         return db.fetchAllCharacters();
@@ -42,6 +46,10 @@ public class Controller {
 
     void deleteAllCharacter() {
         db.deleteAll();
+    }
+
+    void deleteGames() {
+        db.deleteAllGames();
     }
 
     void addGame(String game) {

@@ -4,6 +4,7 @@ public class Character {
     private String playerName;
     private String characterName;
     private String gameName;
+    private int gameIndex;
     private int classIndex;
     private int raceIndex;
     private int alignmentIndex;
@@ -13,11 +14,12 @@ public class Character {
     private String equipment;
     private String spells;
 
-    Character(String p, String ch, String g, int c, int r, int a,
+    Character(String p, String ch, String gs, int g, int c, int r, int a,
               int l, boolean npc, String bg, String eq, String sp) {
         playerName = p;
         characterName = ch;
-        gameName = g;
+        gameName = gs;
+        gameIndex = g;
         classIndex = c;
         raceIndex = r;
         alignmentIndex = a;
@@ -28,11 +30,11 @@ public class Character {
         spells = sp;
     }
 
-    Character(int i, String p, String ch, String g) {
+    Character(int i, String p, String ch, String gs) {
         id = i;
         playerName = p;
         characterName = ch;
-        gameName = g;
+        gameName = gs;
     }
 
     Character() {
@@ -69,6 +71,14 @@ public class Character {
 
     public void setGameName(String gameName) {
         this.gameName = gameName;
+    }
+
+    public int getGameIndex() {
+        return gameIndex;
+    }
+
+    public void setGameIndex(int gameName) {
+        this.gameIndex = gameName;
     }
 
     public int getClassIndex() {
